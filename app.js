@@ -1,12 +1,19 @@
-const url = "https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&format=json&srsearch=hello";
+const url = "https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&format=json&srsearch=";
 const input = document.querySelector('.input');
 const btn1 = document.querySelector('button');
 const output = document.querySelector('.output');
 
+input.addEventListener('keyup',(ele)=>{
+    console.log(input.value);
+})
+
 btn1.addEventListener('click',(e)=>{
-    fetch(url).then((res)=>{return res.json()})
+    let inputeVal = input.value || "java";
+    console.log(inputeVal);
+    let tempUrl = url + inputeVal;
+    //url = url + tempUrl;
+    fetch(tempUrl).then((res)=>{return res.json()})
     .then((data)=>{
-        //console.log(data);
         maker(data.query.search);
     })
 })
