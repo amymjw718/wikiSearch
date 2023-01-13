@@ -19,11 +19,12 @@ btn1.addEventListener('click',(e)=>{
 })
 
 function maker(data){
+    output.innerHTML = ''
     data.forEach(element => {
         console.log(element);
-        const div = document.createElement('div');
-        div.innerHTML += `<h3><a href="https://en.wikipedia.org/wiki?cruid=${element.pageid}" target="_blank"> ${element.title}</a></h3>`;
-        div.innerHTML += element.snippet;
+        let div = document.createElement('div');
+        div.innerHTML = `<h3><a href="https://en.wikipedia.org/wiki?cruid=${element.pageid}" target="_blank"> ${element.title}</a></h3>` + element.snippet;
+        //div.innerHTML += element.snippet;
         div.classList.add('box')
         output.append(div);
     });
